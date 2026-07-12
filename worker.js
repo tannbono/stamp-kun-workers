@@ -4,17 +4,19 @@ import {
   InteractionResponseType
 } from "discord-interactions";
 
+const GITHUB_BASE ="https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/";
+
 const imageMap = {
-  'あ'           : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/あ？.png',
-  'いいとおもう' : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/それいけ.png',
-  'おーまい'     : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/おーまい.png',
-  'おはよう'     : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/おはよう.png',
-  'おとななのに' : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/おとななのに.png',
-  'くさ'         : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/くさ.png',
-  'さいあく'     : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/さいあく.png',
-  'なきました'   : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/なきました.png',
-  'にこ'         : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/にこっ.png',
-  'もてない'     : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/もてない.png',
+	"あ"           : "あ？.png",
+	"いいとおもう" : "それいけ.png",
+	"おーまい"     : "おーまい.png",
+	"おはよう"     : "おはよう.png",
+	"おとななのに" : "おとななのに.png",
+	"くさ"         : "くさ.png",
+	"さいあく"     : "さいあく.png",
+	"なきました"   : "なきました.png",
+	"にこ"         : "にこっ.png",
+	"もてない"     : "もてない.png",
 };
 export default {
   async fetch(request, env) {
@@ -53,9 +55,10 @@ export default {
     // スラッシュコマンド
 	if (interaction.type === InteractionType.APPLICATION_COMMAND) {
 	
-		const imageUrl = imageMap[interaction.data.name];
+		const fileName = imageMap[interaction.data.name];
 	
-		if (imageUrl) {
+		if (fileName) {
+			const imageUrl = GITHUB_BASE + encodeURIComponent(fileName);
 			return Response.json({
 				type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 				data: {
