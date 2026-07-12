@@ -1,22 +1,5 @@
 const { Client, GatewayIntentBits, AttachmentBuilder, REST, Routes, SlashCommandBuilder } = require("discord.js");
 const path = require("path");
-
-//Render用
-const express = require("express");
-
-const app = express();
-
-app.get("/", (req, res) => {
-    res.send("Discord Bot is running.");
-});
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log(`Web server started on port ${PORT}`);
-});
-//aaa
-
 const token = process.env.TOKEN;
 const clientId = '1502001600456298526'; 
 
@@ -73,7 +56,7 @@ client.on('interactionCreate', async interaction => {
     });
   }
 });
-//cd C:\Users\Kadota Terumi\Documents\プログラム\bot
+//cd C:\Users\Kadota Terumi\Documents\プログラム\stamp-kun2
 //git add .
 //git commit -m "コードを修正"
 //git commit -m "スタンプを追加"
