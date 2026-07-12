@@ -4,7 +4,7 @@ import {
   InteractionResponseType
 } from "discord-interactions";
 
-const GITHUB_BASE ="https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/";
+const GITHUB_BASE =  "https://cdn.jsdelivr.net/gh/tannbono/stamp-kun-workers/images/";
 
 const imageMap = {
 	"あ"           : "あ？.png",
