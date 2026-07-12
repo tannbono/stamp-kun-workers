@@ -23,16 +23,16 @@ const commands = [
 
 // コマンドと画像ファイルの対応
 const imageMap = {
-  'あ'         : 'あ？.png',
-  'いいとおもう' : 'それいけ.png',
-  'おーまい'     : 'おーまい.png',
-  'おはよう'     : 'おはよう.png',
-  'おとななのに' : 'おとななのに.png',
-  'くさ'         : 'くさ.png',
-  'さいあく'     : 'さいあく.png',
-  'なきました'   : 'なきました.png',
-  'にこ'         : 'にこっ.png',
-  'もてない'     : 'もてない.png',
+  'あ'           : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/あ？.png',
+  'いいとおもう' : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/それいけ.png',
+  'おーまい'     : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/おーまい.png',
+  'おはよう'     : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/おはよう.png',
+  'おとななのに' : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/おとななのに.png',
+  'くさ'         : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/くさ.png',
+  'さいあく'     : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/さいあく.png',
+  'なきました'   : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/なきました.png',
+  'にこ'         : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/にこっ.png',
+  'もてない'     : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/もてない.png',
 };
 
 // スラッシュコマンドを登録

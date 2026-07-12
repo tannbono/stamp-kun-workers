@@ -4,6 +4,18 @@ import {
   InteractionResponseType
 } from "discord-interactions";
 
+const imageMap = {
+  'あ'           : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/あ？.png',
+  'いいとおもう' : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/それいけ.png',
+  'おーまい'     : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/おーまい.png',
+  'おはよう'     : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/おはよう.png',
+  'おとななのに' : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/おとななのに.png',
+  'くさ'         : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/くさ.png',
+  'さいあく'     : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/さいあく.png',
+  'なきました'   : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/なきました.png',
+  'にこ'         : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/にこっ.png',
+  'もてない'     : 'https://raw.githubusercontent.com/tannbono/stamp-kun-workers/main/images/もてない.png',
+};
 export default {
   async fetch(request, env) {
 
@@ -39,29 +51,25 @@ export default {
     }
 
     // スラッシュコマンド
-    if (interaction.type === InteractionType.APPLICATION_COMMAND) {
-
-      switch (interaction.data.name) {
-
-        case "あ":
-          return Response.json({
-            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-            data: {
-              content: "テスト成功！"
-            }
-          });
-
-        default:
-          return Response.json({
-            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-            data: {
-              content: "未実装のコマンドです。"
-            }
-          });
-
-      }
-
-    }
+	if (interaction.type === InteractionType.APPLICATION_COMMAND) {
+	
+		const imageUrl = imageMap[interaction.data.name];
+	
+		if (imageUrl) {
+			return Response.json({
+				type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+				data: {
+					content: imageUrl
+				}
+			});
+		}
+		return Response.json({
+		  type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+		  data: {
+		    content: "未実装のコマンドです。"
+		  }
+		});
+	}
 
     return new Response("OK");
   }
