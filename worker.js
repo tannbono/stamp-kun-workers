@@ -1,5 +1,7 @@
 import {
-  verifyKey
+  verifyKey,
+  InteractionType,
+  InteractionResponseType
 } from "discord-interactions";
 
 export default {
@@ -29,19 +31,38 @@ export default {
 
     const interaction = JSON.parse(body);
 
-    // DiscordのPING
-    if (interaction.type === 1) {
+    // Discordの接続確認(PING)
+    if (interaction.type === InteractionType.PING) {
       return Response.json({
-        type: 1
+        type: InteractionResponseType.PONG
       });
     }
 
-    return Response.json({
-      type: 4,
-      data: {
-        content: "Cloudflareとの接続に成功しました！"
+    // スラッシュコマンド
+    if (interaction.type === InteractionType.APPLICATION_COMMAND) {
+
+      switch (interaction.data.name) {
+
+        case "あ":
+          return Response.json({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              content: "テスト成功！"
+            }
+          });
+
+        default:
+          return Response.json({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              content: "未実装のコマンドです。"
+            }
+          });
+
       }
-    });
+
+    }
+
+    return new Response("OK");
   }
 };
-
