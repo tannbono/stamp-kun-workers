@@ -6,7 +6,10 @@
     "deploy": "wrangler deploy",
     "dev": "wrangler dev"
   },
+  "dependencies": {
+    "discord-interactions": "^4.4.0"
+  },
   "devDependencies": {
-    "wrangler": "^4.0.0"
+    "wrangler": "^4.110.0"
   }
 }
