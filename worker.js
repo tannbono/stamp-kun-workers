@@ -62,8 +62,14 @@ export default {
 			return Response.json({
 				type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 				data: {
-					content: imageUrl
-				}
+            embeds: [
+                {
+                    image: {
+                        url: imageUrl
+                    }
+                }
+            ]
+        }
 			});
 		}
 		return Response.json({
