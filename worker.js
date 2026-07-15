@@ -87,8 +87,34 @@ export default {
 		
 		// ボタン処理
 		if (interaction.type === InteractionType.MESSAGE_COMPONENT) {
-
 			const customId = interaction.data.custom_id;
+			const currentStamp = customId.substring(7);
+			if (customId.startsWith("random:")) {
+				let stamp;
+				do {
+					stamp = stamps[Math.floor(Math.random() * stamps.length)];
+				} while (
+					stamps.length > 1 &&
+					stamp.name === currentStamp
+				);
+				const imageUrl = GITHUB_BASE + encodeURIComponent(stamp.file);
+			
+				return Response.json({
+					type: InteractionResponseType.UPDATE_MESSAGE,
+					data: {
+						content: imageUrl,
+						components: [{
+							type: 1,
+							components: [{
+								type: 2,
+								style: 1,
+								label: "🎲 もう一回",
+								custom_id: `random:${stamp.name}`
+							}]
+						}]
+					}
+				});
+			}
 
 			if (customId.startsWith("stamp:")) {
 				const stampName = customId.substring(6);
@@ -139,7 +165,7 @@ export default {
 							type: 2,
 							style: 1,
 							label: "🎲 もう一回",
-							custom_id: "random"
+							custom_id: `random:${stamp.name}`
 						}]
 					}]
 				}
