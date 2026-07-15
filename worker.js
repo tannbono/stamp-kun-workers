@@ -37,10 +37,25 @@ export default {
 		// ボタン処理
 		if (interaction.type === InteractionType.MESSAGE_COMPONENT) {
 
+			const customId = interaction.data.custom_id;
+
+			if (customId === "test") {
+
+				const stamp = stamps[Math.floor(Math.random() * stamps.length)];
+				const imageUrl = GITHUB_BASE + encodeURIComponent(stamp.file);
+
+				return Response.json({
+					type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+					data: {
+						content: imageUrl
+					}
+				});
+			}
+
 			return Response.json({
 				type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 				data: {
-					content: "ボタンが押されました。"
+					content: "未実装のボタンです。"
 				}
 			});
 		}
@@ -165,7 +180,5 @@ export default {
 				content: "未実装のコマンドです。"
 			}
 		});
-		
-	return new Response("OK");
 	}
 };
