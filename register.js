@@ -41,13 +41,24 @@ commands.push(
 	new SlashCommandBuilder()
 		.setName("検索")
 		.setDescription("スタンプを検索します")
+
 		.addStringOption(option =>
 			option
-				.setName("ことば")
-				.setDescription("検索する文字")
+				.setName("方法")
+				.setDescription("検索方法")
 				.setRequired(true)
+				.addChoices(
+					{ name: "ワード", value: "word" },
+					{ name: "タグ", value: "tag" }
+				)
 		)
-		.toJSON()
+
+		.addStringOption(option =>
+			option
+				.setName("内容")
+				.setDescription("検索内容")
+				.setRequired(true)
+		);
 );
 
 const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
