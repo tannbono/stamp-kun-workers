@@ -58,7 +58,7 @@ commands.push(
 				.setName("内容")
 				.setDescription("検索内容")
 				.setRequired(true)
-		);
+		)
 );
 
 const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);

@@ -2,70 +2,70 @@ export const GITHUB_BASE = "https://raw.githubusercontent.com/tannbono/stamp-kun
 
 export const stamps = [
 	{
-		name: "a",
+		name: "あ",
 		aliases: ["あ？","ア？"],
 		tags: ["キレ"],
 		file: "あ？.png",
 		description: "ウェストリー・プリチェット「あ゛？」画像を送信"
 	},
 	{
-		name: "iitoomou",
+		name: "いいとおもう",
 		aliases: ["いいとおもう","良いとおもう"],
 		tags: ["同意"],
 		file: "それいけ.png",
 		description: "藍戸侑葵「いいと思う！」画像を送信"
 	},
 	{
-		name: "o-mai",
+		name: "おーまい",
 		aliases: ["おーまい","オーマイ"],
 		tags: ["驚き"],
 		file: "おーまい.png",
 		description: "ソフィン・バリントン「オーマイブッダ……」画像を送信"
 	},
 	{
-		name: "ohayou",
+		name: "おはよう",
 		aliases: ["おはよう","おは"],
 		tags: ["挨拶"],
 		file: "おはよう.png",
 		description: "ハルトヴィクベルト・シュヴァルツ「おはよう……」画像を送信"
 	},
 	{
-		name: "otonananoni",
+		name: "おとななのに",
 		aliases: ["おとななのに","大人なのに"],
 		tags: ["煽り"],
 		file: "おとななのに.png",
 		description: "立里子子子「オトナなのにそんなコトもわからないの～？」画像を送信"
 	},
 	{
-		name: "kusa",
+		name: "くさ",
 		aliases: ["草","くさ","w"],
 		tags: ["煽り","（笑）"],
 		file: "くさ.png",
 		description: "臥紐笑「草」画像を送信"
 	},
 	{
-		name: "saiaku",
+		name: "さいあく",
 		aliases: ["さいあく","最悪"],
 		tags: ["悲哀"],
 		file: "さいあく.png",
 		description: "是頁勿「は～最悪 本っ当に最悪」画像を送信"
 	},
 	{
-		name: "nakimashita",
+		name: "なきました",
 		aliases: ["泣きました","なきました"],
 		tags: ["悲哀"],
 		file: "なきました.png",
 		description: "月下紐美「そのばん おなかが いたくて 泣きました」画像を送信"
 	},
 	{
-		name: "niko",
+		name: "にこ",
 		aliases: ["にこ","ニコ"],
 		tags: ["同意"],
 		file: "にこっ.png",
 		description: "示土会科「にこっ……」画像を送信"
 	},
 	{
-		name: "motenai",
+		name: "もてない",
 		aliases: ["モテない","もてない"],
 		tags: ["煽り"],
 		file: "もてない.png",
