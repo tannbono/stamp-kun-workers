@@ -63,10 +63,7 @@ export default {
 	}
 	// スタンプ送付処理
 	if (interaction.type === InteractionType.APPLICATION_COMMAND) {
-		const stamp = stamps.find(s =>
-			s.name === interaction.data.name ||
-			s.aliases?.includes(interaction.data.name)
-		);
+		const stamp = stamps.find(s => s.name === interaction.data.name);
 		
 		if (stamp) {
 			const imageUrl = GITHUB_BASE + encodeURIComponent(stamp.file);
