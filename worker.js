@@ -34,6 +34,17 @@ export default {
 				type: InteractionResponseType.PONG
 			});
 		}
+		// ボタン処理
+		if (interaction.type === InteractionType.MESSAGE_COMPONENT) {
+
+			return Response.json({
+				type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+				data: {
+					content: "ボタンが押されました。"
+				}
+			});
+		}
+		
 		
 		if (interaction.type !== InteractionType.APPLICATION_COMMAND) { return new Response("OK");}
 		const commandName = interaction.data.name;
@@ -47,6 +58,16 @@ export default {
 				type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 				data: {
 					content: imageUrl
+					
+					components: [{
+						type: 1,
+						components: [{
+							type: 2,
+							style: 2,
+							label: "テスト",
+							custom_id: "test"
+						}]
+					}]
 				}
 			});
 		}
