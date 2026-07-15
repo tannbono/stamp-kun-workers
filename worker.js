@@ -135,8 +135,8 @@ export default {
 					}))
 				}]
 			}
-		});
-	}*/
+		});*/
+	}
 	// スタンプ送付処理
 	if (interaction.type === InteractionType.APPLICATION_COMMAND) {
 		const stamp = stamps.find(s => s.name === interaction.data.name);
