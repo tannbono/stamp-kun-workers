@@ -39,11 +39,19 @@ export default {
 
 			const customId = interaction.data.custom_id;
 
-			if (customId === "test") {
+			if (customId.startsWith("stamp:")) {
+				const stampName = customId.substring(6);
+				const stamp = stamps.find(s => s.name === stampName);
+				if (!stamp) {
+					return Response.json({
+						type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+						data: {
+							content: "スタンプが見つかりません。"
+						}
+					});
+				}
 
-				const stamp = stamps[Math.floor(Math.random() * stamps.length)];
 				const imageUrl = GITHUB_BASE + encodeURIComponent(stamp.file);
-
 				return Response.json({
 					type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 					data: {
@@ -80,7 +88,7 @@ export default {
 							type: 2,
 							style: 2,
 							label: "テスト",
-							custom_id: "test"
+							custom_id: `stamp:${stamp.name}`
 						}]
 					}]
 				}
