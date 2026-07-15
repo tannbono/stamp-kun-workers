@@ -4,7 +4,7 @@ import {
   InteractionResponseType
 } from "discord-interactions";
 
-import { GITHUB_BASE, stamps } from "./imageMap.js";
+import { GITHUB_BASE, stamps } from "./stamps.js";
 
 export default {
   async fetch(request, env) {
