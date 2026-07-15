@@ -27,7 +27,8 @@ export const stamps = [
 		description: "立里子子子「オトナなのにそんなコトもわからないの～？」画像を送信"
 	},
 	{
-		name: "くさ",
+		name: "kusa",
+		aliases: ["草","くさ","w"],
 		file: "くさ.png",
 		description: "臥紐笑「草」画像を送信"
 	},
