@@ -43,14 +43,25 @@ export default {
 
     const interaction = JSON.parse(body);
 
-    // Discordの接続確認(PING)
-    if (interaction.type === InteractionType.PING) {
-      return Response.json({
-        type: InteractionResponseType.PONG
-      });
-    }
-
-    // スラッシュコマンド
+	// Discordの接続確認(PING)
+	if (interaction.type === InteractionType.PING) {
+	  return Response.json({
+	    type: InteractionResponseType.PONG
+	  });
+	}
+	//ランダム処理
+	if (interaction.data.name === "らんだむ") {
+		const stamp = stamps[Math.floor(Math.random() * stamps.length)];
+		const imageUrl = GITHUB_BASE + encodeURIComponent(stamp.file);
+		
+		return Response.json({
+			type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+			data: {
+				content: imageUrl
+			}
+		});
+	}
+	// スタンプ送付処理
 	if (interaction.type === InteractionType.APPLICATION_COMMAND) {
 		const stamp = stamps.find(s => s.name === interaction.data.name);
 		
