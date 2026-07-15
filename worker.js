@@ -63,6 +63,14 @@ export default {
 	}
 	if (interaction.data.name === "検索") {
 		
+		
+	return Response.json({
+		type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+		data: {
+			content: "検索コマンドはここまで来ています"
+		}
+	});
+		/*
 		const method = interaction.data.options.find(
 			option => option.name === "方法"
 		).value;
@@ -98,38 +106,37 @@ export default {
 				)
 			);
 		}
-
-	if (result.length === 0) {
+		
+		if (result.length === 0) {
+			return Response.json({
+				type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+				data: {
+					content: "該当するスタンプは見つかりませんでした。"
+				}
+			});
+		}
 
 		return Response.json({
 			type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 			data: {
-				content: "該当するスタンプは見つかりませんでした。"
+				content:
+					`検索結果（${result.length}件）\n\n` +
+					result.map((stamp, index) =>
+						`${index + 1}. ${stamp.name}`
+					).join("\n"),
+
+				components: [{
+					type: 1,
+					components: result.slice(0, 5).map(stamp => ({
+						type: 2,
+						style: 2,
+						label: stamp.name,
+						custom_id: `stamp:${stamp.name}`
+					}))
+				}]
 			}
 		});
-	}
-
-	return Response.json({
-		type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-		data: {
-			content:
-				`検索結果（${result.length}件）\n\n` +
-				result.map((stamp, index) =>
-					`${index + 1}. ${stamp.name}`
-				).join("\n"),
-
-			components: [{
-				type: 1,
-				components: result.slice(0, 5).map(stamp => ({
-					type: 2,
-					style: 2,
-					label: stamp.name,
-					custom_id: `stamp:${stamp.name}`
-				}))
-			}]
-		}
-	});
-}
+	}*/
 	// スタンプ送付処理
 	if (interaction.type === InteractionType.APPLICATION_COMMAND) {
 		const stamp = stamps.find(s => s.name === interaction.data.name);
