@@ -124,7 +124,7 @@ export default {
 		const commandName = interaction.data.name;
 		
 		//ランダム処理
-		if (commandName === "らんだむ") {
+		if (commandName === "random") {
 			const stamp = stamps[Math.floor(Math.random() * stamps.length)];
 			const imageUrl = GITHUB_BASE + encodeURIComponent(stamp.file);
 			
@@ -146,7 +146,7 @@ export default {
 			});
 		}
 		//検索
-		if (commandName === "検索"){
+		if (commandName === "search"){
 			
 			const method = interaction.data.options.find(
 				option => option.name === "方法"

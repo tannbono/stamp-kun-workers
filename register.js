@@ -32,14 +32,14 @@ for (const stamp of stamps) {
 // ランダム
 commands.push(
 	new SlashCommandBuilder()
-		.setName("らんだむ")
+		.setName("random")
 		.setDescription("ランダムにスタンプを表示します")
 		.toJSON()
 );
 // 検索
 commands.push(
 	new SlashCommandBuilder()
-		.setName("検索")
+		.setName("search")
 		.setDescription("スタンプを検索します")
 
 		.addStringOption(option =>
