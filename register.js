@@ -14,19 +14,6 @@ for (const stamp of stamps) {
 			.toJSON()
 	);
 
-	// エイリアス
-	/*if (stamp.aliases) {
-
-		for (const alias of stamp.aliases) {
-
-			commands.push(
-				new SlashCommandBuilder()
-					.setName(alias)
-					.setDescription(`${stamp.name} の別名`)
-					.toJSON()
-			);
-		}
-	}*/
 }
 
 // ランダム
