@@ -62,38 +62,62 @@ export default {
 		});
 	}
 	if (interaction.data.name === "検索") {
-		const keyword = interaction.data.options[0].value.toLowerCase();
-		const result = stamps.filter(stamp => {
-			if (stamp.name.toLowerCase().includes(keyword)) {
-				return true;
-			}
-			
-			if (stamp.aliases?.some(alias =>
-				alias.toLowerCase().includes(keyword)
-			)) {
-				return true;
-			}
-			return false;
-		});
 		
-		if (result.length === 0) {
-			return Response.json({
-				type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-				data: {
-					content: "該当するスタンプは見つかりませんでした。"
+		const method = interaction.data.options.find(
+			option => option.name === "方法"
+		).value;
+
+		const value = interaction.data.options.find(
+			option => option.name === "内容"
+		).value.toLowerCase();
+
+		let result = [];
+
+		if (method === "word") {
+
+			result = stamps.filter(stamp => {
+
+				if (stamp.name.toLowerCase().includes(value)) {
+					return true;
 				}
+
+				if (stamp.aliases?.some(alias =>
+					alias.toLowerCase().includes(value)
+				)) {
+					return true;
+				}
+
+				return false;
 			});
 		}
+		else if (method === "tag") {
+
+			result = stamps.filter(stamp =>
+				stamp.tags?.some(tag =>
+					tag.toLowerCase().includes(value)
+				)
+			);
+		}
+
+	if (result.length === 0) {
 
 		return Response.json({
 			type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 			data: {
-				content:
-					"検索結果\n\n" +
-					result.map(stamp => `・${stamp.name}`).join("\n")
+				content: "該当するスタンプは見つかりませんでした。"
 			}
 		});
 	}
+
+	return Response.json({
+		type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+		data: {
+			content:
+				"検索結果\n\n" +
+				result.map(stamp => `・${stamp.name}`).join("\n")
+		}
+	});
+}
 	// スタンプ送付処理
 	if (interaction.type === InteractionType.APPLICATION_COMMAND) {
 		const stamp = stamps.find(s => s.name === interaction.data.name);
