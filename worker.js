@@ -87,7 +87,7 @@ export default {
 						components: [{
 							type: 2,
 							style: 2,
-							label: "テスト",
+							label:  stamp.name,
 							custom_id: `stamp:${stamp.name}`
 						}]
 					}]
