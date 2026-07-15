@@ -4,7 +4,7 @@ import {
   InteractionResponseType
 } from "discord-interactions";
 
-import { GITHUB_BASE, imageMap } from "./imageMap.js";
+import { GITHUB_BASE, stamps } from "./imageMap.js";
 
 export default {
   async fetch(request, env) {
@@ -42,11 +42,10 @@ export default {
 
     // スラッシュコマンド
 	if (interaction.type === InteractionType.APPLICATION_COMMAND) {
-	
-		const fileName = imageMap[interaction.data.name];
-	
-		if (fileName) {
-			const imageUrl = GITHUB_BASE + encodeURIComponent(fileName);
+		const stamp = stamps.find(s => s.name === interaction.data.name);
+		
+		if (stamp) {
+			const imageUrl = GITHUB_BASE + encodeURIComponent(stamp.file);
 			return Response.json({
 				type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 				data: {
