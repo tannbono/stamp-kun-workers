@@ -97,13 +97,6 @@ export default {
 		//検索
 		if (commandName === "検索"){
 			
-		return Response.json({
-			type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-			data: {
-				content: "検索コマンドはここまで来ています"
-			}
-		});
-			/*
 			const method = interaction.data.options.find(
 				option => option.name === "方法"
 			).value;
@@ -168,7 +161,7 @@ export default {
 						}))
 					}]
 				}
-			});*/
+			});
 		}
 		// スタンプ送付処理
 		const stamp = stamps.find( s => s.name === commandName );
