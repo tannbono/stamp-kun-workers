@@ -15,7 +15,7 @@ for (const stamp of stamps) {
 	);
 
 	// エイリアス
-	if (stamp.aliases) {
+	/*if (stamp.aliases) {
 
 		for (const alias of stamp.aliases) {
 
@@ -26,7 +26,7 @@ for (const stamp of stamps) {
 					.toJSON()
 			);
 		}
-	}
+	}*/
 }
 
 // ランダム
@@ -34,6 +34,19 @@ commands.push(
 	new SlashCommandBuilder()
 		.setName("らんだむ")
 		.setDescription("ランダムにスタンプを表示します")
+		.toJSON()
+);
+// 検索
+commands.push(
+	new SlashCommandBuilder()
+		.setName("検索")
+		.setDescription("スタンプを検索します")
+		.addStringOption(option =>
+			option
+				.setName("ことば")
+				.setDescription("検索する文字")
+				.setRequired(true)
+		)
 		.toJSON()
 );
 
