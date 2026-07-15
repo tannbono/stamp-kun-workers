@@ -1,13 +1,20 @@
 import { REST, Routes, SlashCommandBuilder } from "discord.js";
-import { stamps } from "./imageMap.js";
+import { stamps } from "./stamps.js";
 import "dotenv/config";
 
-const commands = stamps.map(stamp =>
+const commands = [
+	...stamps.map(stamp =>
+		new SlashCommandBuilder()
+			.setName(stamp.name)
+			.setDescription(stamp.description)
+			.toJSON()
+	),
+
 	new SlashCommandBuilder()
-		.setName(stamp.name)
-		.setDescription(stamp.description)
+		.setName("らんだむ")
+		.setDescription("ランダムにスタンプを表示します")
 		.toJSON()
-);
+];
 
 const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 
