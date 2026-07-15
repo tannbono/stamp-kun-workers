@@ -2,19 +2,40 @@ import { REST, Routes, SlashCommandBuilder } from "discord.js";
 import { stamps } from "./stamps.js";
 import "dotenv/config";
 
-const commands = [
-	...stamps.map(stamp =>
+const commands = [];
+
+for (const stamp of stamps) {
+
+	// メインコマンド
+	commands.push(
 		new SlashCommandBuilder()
 			.setName(stamp.name)
 			.setDescription(stamp.description)
 			.toJSON()
-	),
+	);
 
+	// エイリアス
+	if (stamp.aliases) {
+
+		for (const alias of stamp.aliases) {
+
+			commands.push(
+				new SlashCommandBuilder()
+					.setName(alias)
+					.setDescription(`${stamp.name} の別名`)
+					.toJSON()
+			);
+		}
+	}
+}
+
+// ランダム
+commands.push(
 	new SlashCommandBuilder()
 		.setName("らんだむ")
 		.setDescription("ランダムにスタンプを表示します")
 		.toJSON()
-];
+);
 
 const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 
