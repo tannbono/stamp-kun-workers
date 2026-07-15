@@ -137,9 +137,9 @@ export default {
 						type: 1,
 						components: [{
 							type: 2,
-							style: 2,
-							label:  stamp.name,
-							custom_id: `stamp:${stamp.name}`
+							style: 1,
+							label: "🎲 もう一回",
+							custom_id: "random"
 						}]
 					}]
 				}
