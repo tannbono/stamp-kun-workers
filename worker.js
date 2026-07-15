@@ -34,6 +34,57 @@ export default {
 				type: InteractionResponseType.PONG
 			});
 		}
+		// オートコンプリート
+		if (interaction.type === InteractionType.APPLICATION_COMMAND_AUTOCOMPLETE) {
+			const options = interaction.data.options ?? [];
+			const method = options.find(
+				option => option.name === "方法"
+			)?.value;
+
+			const value = (
+				options.find(option => option.name === "内容")?.value ?? ""
+			).toLowerCase();
+
+			let choices = [];
+
+			if (method === "word") {
+				const names = [];
+				for (const stamp of stamps) {
+					names.push(stamp.name);
+
+					if (stamp.aliases) {
+						names.push(...stamp.aliases);
+					}
+				}
+				
+				choices = [...new Set(names)]
+					.filter(name =>
+						name.toLowerCase().includes(value)
+					);
+			}
+			
+			else if (method === "tag") {
+				const tags = [...new Set(
+					stamps.flatMap(stamp => stamp.tags ?? [])
+				)];
+				choices = tags.filter(tag =>
+					tag.toLowerCase().includes(value)
+				);
+			}
+			
+			return Response.json({
+				type: InteractionResponseType.APPLICATION_COMMAND_AUTOCOMPLETE_RESULT,
+				data: {
+					choices: choices
+						.slice(0, 25)
+						.map(choice => ({
+							name: choice,
+							value: choice
+						}))
+				}
+			});
+		}
+		
 		// ボタン処理
 		if (interaction.type === InteractionType.MESSAGE_COMPONENT) {
 
