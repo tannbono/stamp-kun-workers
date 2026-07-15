@@ -196,11 +196,7 @@ export default {
 			return Response.json({
 				type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 				data: {
-					content:
-						`検索結果（${result.length}件）\n\n` +
-						result.map((stamp, index) =>
-							`${index + 1}. ${stamp.name}`
-						).join("\n"),
+					content: `検索結果 ${result.length}件\nボタンを押すとスタンプが送信されます。`,
 
 					components: [{
 						type: 1,
