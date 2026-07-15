@@ -4,20 +4,8 @@ import {
   InteractionResponseType
 } from "discord-interactions";
 
-const GITHUB_BASE =  "https://cdn.jsdelivr.net/gh/tannbono/stamp-kun-workers/images/";
+import { GITHUB_BASE, imageMap } from "./imageMap.js";
 
-const imageMap = {
-	"あ"           : "あ？.png",
-	"いいとおもう" : "それいけ.png",
-	"おーまい"     : "おーまい.png",
-	"おはよう"     : "おはよう.png",
-	"おとななのに" : "おとななのに.png",
-	"くさ"         : "くさ.png",
-	"さいあく"     : "さいあく.png",
-	"なきました"   : "なきました.png",
-	"にこ"         : "にこっ.png",
-	"もてない"     : "もてない.png",
-};
 export default {
   async fetch(request, env) {
 
