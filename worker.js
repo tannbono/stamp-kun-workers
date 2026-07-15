@@ -6,6 +6,16 @@ import {
 
 import { GITHUB_BASE, stamps } from "./stamps.js";
 
+async function fetchImage(url) {
+	const response = await fetch(url);
+
+	if (!response.ok) {
+		throw new Error(`画像取得失敗: ${response.status}`);
+	}
+
+	return response.arrayBuffer();
+}
+
 export default {
   async fetch(request, env) {
 
