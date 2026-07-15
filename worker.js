@@ -113,8 +113,20 @@ export default {
 		type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 		data: {
 			content:
-				"検索結果\n\n" +
-				result.map(stamp => `・${stamp.name}`).join("\n")
+				`検索結果（${result.length}件）\n\n` +
+				result.map((stamp, index) =>
+					`${index + 1}. ${stamp.name}`
+				).join("\n"),
+
+			components: [{
+				type: 1,
+				components: result.slice(0, 5).map(stamp => ({
+					type: 2,
+					style: 2,
+					label: stamp.name,
+					custom_id: `stamp:${stamp.name}`
+				}))
+			}]
 		}
 	});
 }
