@@ -58,6 +58,7 @@ commands.push(
 				.setName("内容")
 				.setDescription("検索内容")
 				.setRequired(true)
+				.setAutocomplete(true)
 		)
 );
 
